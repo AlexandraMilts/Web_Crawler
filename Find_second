@@ -1,0 +1,8 @@
+def find_second(a,b):
+  return a.find(b,a.find(b) + len(b))
+
+
+
+danton = "De l'audace, encore de l'audace, toujours de l'audace"
+print (find_second(danton, 'audace'))
+#>>> 25
