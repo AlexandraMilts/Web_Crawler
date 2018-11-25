@@ -1,4 +1,4 @@
-def get_next_target(page):
+def get_next_target(page): #Find the 1st url on the page and define where it ends - to start looking for the new one
     start_link = page.find('<a href=')
     if start_link == -1:
         return None, 0
@@ -8,11 +8,13 @@ def get_next_target(page):
     next_target = page[end_url+1:]
     return url,end_url
 
-def all_links(page):
-    while True:
-        url, end_url = get_next_target(page)
-        if url:
-            print url
-            page = page[end_url+1:]
+def get_all_links(page): #Get all the links on the page
+    links = [] #Create the empty list of links
+    while True: #Basically, forever, until break happens
+        url, end_url = get_next_target(page) #Check if we have a url and where we start crawling
+        if url: #If url exists
+            list.append(url) #Add the url to the list
+            page = page[end_url+1:] #Start crawling after the url
         else:
-            break
+            break #Run until we run out of the urls on the page
+    return list
